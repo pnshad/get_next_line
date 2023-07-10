@@ -12,35 +12,49 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(char *s, int c)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	if (c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
+	while (s[i])
 		i++;
-	}
-	return (0);
+	return (i);
 }
+
+// char	*ft_strchr(char *s, int c)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (!s)
+// 		return (NULL);
+// 	if (c == '\0')
+// 		return ((char *)s + ft_strlen(s));
+// 	while (s[i] != '\0')
+// 	{
+// 		if (s[i] == (char)c)
+// 			return ((char *)s + i);
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
+char	*ft_strchr_np(char *s, int c)
+{
+	unsigned char	uc;
+
+	if (s)
+	{
+		uc = (unsigned char)c;
+		while (*s != uc && *s)
+			s++;
+		if (*s == uc)
+			return ((char *)s);
+	}
+	return (NULL);
+}
+
 
 char	*ft_strjoin(char *sx_str, char *buff)
 {

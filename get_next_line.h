@@ -22,8 +22,8 @@
 #  define BUFFER_SIZE 42
 # endif
 
-size_t	ft_strlen(char *str);
-char	*ft_strchr(char *s, int c);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr_np(char *s, int c);
 char	*ft_strjoin(char *sx_str, char *buff);
 char	*ft_line(char *str);
 char	*ft_next_string(char *str);

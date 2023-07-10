@@ -12,14 +12,14 @@
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	if (!s)
+		return (i);
+	while (s[i])
 		i++;
 	return (i);
 }

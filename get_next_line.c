@@ -23,7 +23,7 @@ char	*ft_read(int fd, char *str)
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(str, '\n') && bytes_read != 0)
+	while (!ft_strchr_np(str, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
