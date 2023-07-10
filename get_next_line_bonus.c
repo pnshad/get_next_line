@@ -14,25 +14,25 @@
 
 char	*ft_read(int fd, char *str)
 {
-	char	*buff;
-	int		bytes;
+	char	*buffer;
+	int		bytes_read;
 
-	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff)
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
-	bytes = 1;
-	while (!ft_strchr(str, '\n') && bytes != 0)
+	bytes_read = 1;
+	while (!ft_strchr(str, '\n') && bytes_read != 0)
 	{
-		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == -1)
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
-			free(buff);
+			free(buffer);
 			return (NULL);
 		}
-		buff[bytes] = '\0';
-		str = ft_strjoin(str, buff);
+		buffer[bytes_read] = '\0';
+		str = ft_strjoin(str, buffer);
 	}
-	free(buff);
+	free(buffer);
 	return (str);
 }
 
