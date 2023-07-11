@@ -38,8 +38,6 @@ char	*ft_next_string(char *str)
 	return (tab);
 }
 
-
-
 char	*ft_line(char *str)
 {
 	int		i;
