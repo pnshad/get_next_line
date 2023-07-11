@@ -26,7 +26,7 @@ char	*ft_next_string(char *str)
 		free(str);
 		return (NULL);
 	}
-	tab = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	tab = (char *)malloc(sizeof(char) * (ft_strlen_np(str) - i + 1));
 	if (!tab)
 		return (NULL);
 	i ++;
@@ -79,7 +79,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	str = malloc((ft_strlen_np(s1) + ft_strlen_np(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -88,7 +88,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		str[i] = s1[i];
 	while (s2[j])
 		str[i++] = s2[j++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	str[ft_strlen_np(s1) + ft_strlen_np(s2)] = '\0';
 	free(s1);
 	return (str);
 }
