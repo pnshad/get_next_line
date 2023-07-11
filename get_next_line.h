@@ -22,7 +22,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-size_t	ft_strlen(const char *str);
+size_t	ft_strlen_np(const char *str);
 char	*ft_strchr_np(char *s, int c);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_line(char *str);
