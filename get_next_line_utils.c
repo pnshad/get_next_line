@@ -22,39 +22,18 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-// char	*ft_strchr(char *s, int c)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!s)
-// 		return (NULL);
-// 	if (c == '\0')
-// 		return ((char *)s + ft_strlen(s));
-// 	while (s[i] != '\0')
-// 	{
-// 		if (s[i] == (char)c)
-// 			return ((char *)s + i);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
 char	*ft_strchr_np(char *s, int c)
 {
-	unsigned char	uc;
 
 	if (s)
 	{
-		uc = (unsigned char)c;
-		while (*s != uc && *s)
+		while (*s != (char)c && *s)
 			s++;
-		if (*s == uc)
-			return ((char *)s);
+		if (*s == (char)c)
+			return (s);
 	}
 	return (NULL);
 }
-
 
 char	*ft_strjoin(char *sx_str, char *buff)
 {
