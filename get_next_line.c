@@ -44,7 +44,7 @@ char	*ft_line(char *str)
 	char	*tab;
 
 	i = 0;
-	if (!str[i])
+	if (!str)
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i ++;
