@@ -12,110 +12,107 @@
 
 #include "get_next_line.h"
 
-char	*ft_next_string(char *str)
+char	*ft_remove_line_str(char *str)
 {
 	int		i;
 	int		j;
-	char	*tab;
+	char	*str_out;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
-		i ++;
+		i++;
 	if (!str[i])
 	{
 		free(str);
 		return (NULL);
 	}
-	tab = (char *)malloc(sizeof(char) * (ft_strlen_np(str) - i + 1));
-	if (!tab)
+	str_out = (char *)malloc(ft_strlen_np(str) - i + 1);
+	if (!str_out)
 		return (NULL);
-	i ++;
+	i++;
 	j = 0;
 	while (str[i])
-		tab[j++] = str[i++];
-	tab[j] = '\0';
+		str_out[j++] = str[i++];
+	str_out[j] = '\0';
 	free(str);
-	return (tab);
+	return (str_out);
 }
 
-char	*ft_line(char *str)
+char	*ft_str_to_line(char *str)
 {
 	int		i;
-	char	*tab;
+	char	*line;
 
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i] && str[i] != '\n')
-		i ++;
-	tab = (char *)malloc(sizeof(char) * (i + 2));
-	if (!tab)
+	if (!str || !*str)
 		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
+		i++;
+	line = (char *)malloc(i + 2);
+	if (!line)
+		return (NULL);
+	if (str[i] != '\0')
+		line[i+1] = '\0';
+	while (i >= 0)
 	{
-		tab[i] = str[i];
-		i ++;
+		line[i] = str[i];
+		i--;
 	}
-	if (str[i] == '\n')
-	{
-		tab[i] = str[i];
-		i ++;
-	}
-	tab[i] = '\0';
-	return (tab);
+	return (line);
 }
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
-	char	*str;
+	char	*str_out;
 
 	if (!s1)
 	{
-		s1 = (char *)malloc(1 * sizeof(char));
+		s1 = (char *)malloc(sizeof(char));
 		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((ft_strlen_np(s1) + ft_strlen_np(s2) + 1) * sizeof(char));
-	if (!str)
+	str_out = malloc((ft_strlen_np(s1) + ft_strlen_np(s2) + 1));
+	if (!str_out)
 		return (NULL);
 	i = -1;
 	j = 0;
 	while (s1[++i])
-		str[i] = s1[i];
+		str_out[i] = s1[i];
 	while (s2[j])
-		str[i++] = s2[j++];
-	str[ft_strlen_np(s1) + ft_strlen_np(s2)] = '\0';
+		str_out[i++] = s2[j++];
+	str_out[ft_strlen_np(s1) + ft_strlen_np(s2)] = '\0';
 	free(s1);
-	return (str);
+	return (str_out);
 }
 
-char	*ft_read(int fd, char *str)
+char	*ft_file_to_str(int fd, char *str)
 {
-	char	*buffer;
+	char	*buf;
 	int		bytes_read;
 
 	if (BUFFER_SIZE == 0)
 		return (NULL);
-	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
 		return (NULL);
 	bytes_read = 1;
 	while (!ft_strchr_np(str, '\n') && bytes_read != 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free(buffer);
+			free(buf);
 			return (NULL);
 		}
-		buffer[bytes_read] = '\0';
-		str = ft_strjoin_gnl(str, buffer);
+		buf[bytes_read] = '\0';
+		str = ft_strjoin_gnl(str, buf);
 	}
-	free(buffer);
+	free(buf);
 	return (str);
 }
 
@@ -126,10 +123,10 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = ft_read(fd, str);
+	str = ft_file_to_str(fd, str);
 	if (!str)
 		return (NULL);
-	line = ft_line(str);
-	str = ft_next_string(str);
+	line = ft_str_to_line(str);
+	str = ft_remove_line_str(str);
 	return (line);
 }
