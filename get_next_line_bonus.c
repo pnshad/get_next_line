@@ -12,121 +12,121 @@
 
 #include "get_next_line_bonus.h"
 
-char	*ft_remove_line_str(char *str)
+char	*ft_remove_last_line(char *section)
 {
 	int		i;
 	int		j;
-	char	*str_out;
+	char	*cleaned_section;
 
-	if (!str)
+	if (!section)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (section[i] && section[i] != '\n')
 		i++;
-	if (!str[i])
+	if (!section[i])
 	{
-		free(str);
+		free(section);
 		return (NULL);
 	}
-	str_out = (char *)malloc(ft_strlen_np(str) - i + 1);
-	if (!str_out)
+	cleaned_section = (char *)malloc(ft_strlen(section) - i + 1);
+	if (!cleaned_section)
 		return (NULL);
 	i++;
 	j = 0;
-	while (str[i])
-		str_out[j++] = str[i++];
-	str_out[j] = '\0';
-	free(str);
-	return (str_out);
+	while (section[i])
+		cleaned_section[j++] = section[i++];
+	cleaned_section[j] = '\0';
+	free(section);
+	return (cleaned_section);
 }
 
-char	*ft_str_to_line(char *str)
+char	*ft_line_from_section(char *section)
 {
 	int		i;
 	char	*line;
 
-	if (!str || !*str)
+	if (!section || !*section)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (section[i] && section[i] != '\n')
 		i++;
 	line = (char *)malloc(i + 2);
 	if (!line)
 		return (NULL);
-	if (str[i] == '\n')
+	if (section[i] != '\0')
 		line[i + 1] = '\0';
 	while (i >= 0)
 	{
-		line[i] = str[i];
+		line[i] = section[i];
 		i--;
 	}
 	return (line);
 }
 
-char	*ft_strjoin_gnl(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *section, char *buffer)
 {
 	size_t	i;
 	size_t	j;
-	char	*str_out;
+	char	*new_section;
 
-	if (!s1)
+	if (!section)
 	{
-		s1 = (char *)malloc(sizeof(char));
-		s1[0] = '\0';
+		section = (char *)malloc(sizeof(char));
+		section[0] = '\0';
 	}
-	if (!s1 || !s2)
+	if (!section || !buffer)
 		return (NULL);
-	str_out = malloc((ft_strlen_np(s1) + ft_strlen_np(s2) + 1));
-	if (!str_out)
+	new_section = malloc((ft_strlen(section) + ft_strlen(buffer) + 1));
+	if (!new_section)
 		return (NULL);
 	i = -1;
 	j = 0;
-	while (s1[++i])
-		str_out[i] = s1[i];
-	while (s2[j])
-		str_out[i++] = s2[j++];
-	str_out[ft_strlen_np(s1) + ft_strlen_np(s2)] = '\0';
-	free(s1);
-	return (str_out);
+	while (section[++i])
+		new_section[i] = section[i];
+	while (buffer[j])
+		new_section[i++] = buffer[j++];
+	new_section[ft_strlen(section) + ft_strlen(buffer)] = '\0';
+	free(section);
+	return (new_section);
 }
 
-char	*ft_file_to_str(int fd, char *str)
+char	*ft_read_section(int fd, char *section)
 {
-	char	*buf;
+	char	*buffer;
 	int		bytes_read;
 
 	if (BUFFER_SIZE == 0)
 		return (NULL);
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read != 0 && !ft_strchr_np(str, '\n'))
+	while (bytes_read != 0 && !ft_strchr_np(section, '\n'))
 	{
-		bytes_read = read(fd, buf, BUFFER_SIZE);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free(buf);
+			free(buffer);
 			return (NULL);
 		}
-		buf[bytes_read] = '\0';
-		str = ft_strjoin_gnl(str, buf);
+		buffer[bytes_read] = '\0';
+		section = ft_strjoin_gnl(section, buffer);
 	}
-	free(buf);
-	return (str);
+	free(buffer);
+	return (section);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*str[OPEN_MAX];
+	static char	*section[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
-	str[fd] = ft_file_to_str(fd, str[fd]);
-	if (!str[fd])
+	section[fd] = ft_read_section(fd, section[fd]);
+	if (!section[fd])
 		return (NULL);
-	line = ft_str_to_line(str[fd]);
-	str[fd] = ft_remove_line_str(str[fd]);
+	line = ft_line_from_section(section[fd]);
+	section[fd] = ft_remove_last_line(section[fd]);
 	return (line);
 }
