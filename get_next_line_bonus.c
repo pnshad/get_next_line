@@ -54,7 +54,7 @@ char	*ft_str_to_line(char *str)
 	if (!line)
 		return (NULL);
 	if (str[i] == '\n')
-		line[i+1] = '\0';
+		line[i + 1] = '\0';
 	while (i >= 0)
 	{
 		line[i] = str[i];

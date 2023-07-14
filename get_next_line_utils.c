@@ -24,7 +24,6 @@ size_t	ft_strlen_np(const char *s)
 
 char	*ft_strchr_np(char *s, int c)
 {
-
 	if (s)
 	{
 		while (*s != (char)c && *s)
