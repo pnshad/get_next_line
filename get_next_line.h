@@ -22,12 +22,12 @@
 #  define BUFFER_SIZE 42
 # endif
 
-size_t	ft_strlen_np(const char *str);
-char	*ft_strchr_np(char *s, int c);
-char	*ft_strjoin_gnl(char *s1, char *s2);
-char	*ft_str_to_line(char *str);
-char	*ft_remove_line_str(char *str);
-char	*ft_file_to_str(int fd, char *str);
 char	*get_next_line(int fd);
+char	*ft_read_section(int fd, char *section);
+char	*ft_strchr_np(char *s, int c);
+char	*ft_strjoin_gnl(char *section, char *buffer);
+size_t	ft_strlen(const char *str);
+char	*ft_line_from_section(char *section);
+char	*ft_remove_last_line(char *section);
 
 #endif
