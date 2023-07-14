@@ -53,7 +53,7 @@ char	*ft_str_to_line(char *str)
 	line = (char *)malloc(i + 2);
 	if (!line)
 		return (NULL);
-	if (str[i] != '\0')
+	if (str[i] == '\n')
 		line[i+1] = '\0';
 	while (i >= 0)
 	{
@@ -101,7 +101,7 @@ char	*ft_file_to_str(int fd, char *str)
 	if (!buf)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr_np(str, '\n') && bytes_read != 0)
+	while (bytes_read != 0 && !ft_strchr_np(str, '\n'))
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
