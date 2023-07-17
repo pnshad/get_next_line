@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-char	*ft_remove_last_line(char *section)
+char	*ft_remove_line_from(char *section)
 {
 	int		i;
 	int		j;
@@ -40,7 +40,7 @@ char	*ft_remove_last_line(char *section)
 	return (cleaned_section);
 }
 
-char	*ft_line_from_section(char *section)
+char	*ft_extract_line_from(char *section)
 {
 	int		i;
 	char	*line;
@@ -63,7 +63,7 @@ char	*ft_line_from_section(char *section)
 	return (line);
 }
 
-char	*ft_strjoin_gnl(char *section, char *buffer)
+char	*ft_create_append_to(char *section, char *buffer)
 {
 	size_t	i;
 	size_t	j;
@@ -90,7 +90,7 @@ char	*ft_strjoin_gnl(char *section, char *buffer)
 	return (new_section);
 }
 
-char	*ft_read_section(int fd, char *section)
+char	*ft_line_section_from(int fd, char *section)
 {
 	char	*buffer;
 	int		bytes_read;
@@ -110,7 +110,7 @@ char	*ft_read_section(int fd, char *section)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		section = ft_strjoin_gnl(section, buffer);
+		section = ft_create_append_to(section, buffer);
 	}
 	free(buffer);
 	return (section);
@@ -123,10 +123,10 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
-	section[fd] = ft_read_section(fd, section[fd]);
+	section[fd] = ft_line_section_from(fd, section[fd]);
 	if (!section[fd])
 		return (NULL);
-	line = ft_line_from_section(section[fd]);
-	section[fd] = ft_remove_last_line(section[fd]);
+	line = ft_extract_line_from(section[fd]);
+	section[fd] = ft_remove_line_from(section[fd]);
 	return (line);
 }

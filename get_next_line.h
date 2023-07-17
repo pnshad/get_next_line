@@ -23,11 +23,11 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_read_section(int fd, char *section);
+char	*ft_line_section_from(int fd, char *section);
 char	*ft_strchr_np(char *s, int c);
-char	*ft_strjoin_gnl(char *section, char *buffer);
+char	*ft_create_append_to(char *section, char *buffer);
 size_t	ft_strlen(const char *str);
-char	*ft_line_from_section(char *section);
-char	*ft_remove_last_line(char *section);
+char	*ft_extract_line_from(char *section);
+char	*ft_remove_line_from(char *section);
 
 #endif
