@@ -1,7 +1,3 @@
-Certainly, I've added the requested sections to the README. Here's the updated version:
-
----
-
 # get_next_line
 
 ## Introduction
@@ -69,7 +65,3 @@ This project is released under the [MIT License](LICENSE), granting you the free
 ## Acknowledgements
 
 We would like to express our gratitude to the developers and contributors of related tools and libraries that have made this project possible.
-
----
-
-Please customize and adjust this version of the README to match your project's specifics and any additional information you want to include.
