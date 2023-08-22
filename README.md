@@ -31,11 +31,24 @@ Skills: Unix, Rigor, Algorithms & AI
 
 ## Folder Structure
 
-The project repository is organized as follows:
+The structure of the project repository has been meticulously organized as outlined below:
 
-- `get_next_line.c`: Main implementation of the `get_next_line` function.
-- `get_next_line_utils.c`: Utility functions required for the main implementation.
-- `get_next_line.h`: Header file containing function prototypes and necessary includes.
+- **gnl_125_submitted**: This folder contains the main project submission.
+  - `get_next_line.c`: This file hosts the primary implementation of the `get_next_line` function.
+  - `get_next_line_utils.c`: Here, you'll find utility functions indispensable for the main implementation.
+  - `get_next_line.h`: This header file houses function prototypes and essential includes for the project.
+
+- **.gitignore**: Excludes specified files and directories from version control, like the temporary test environment.
+- **README.md**: The project's main documentation file.
+- **get_next_line.c**: A version of the `get_next_line` implementation with updates.
+- **get_next_line.h**: An updated header file for the `get_next_line` function.
+- **get_next_line_bonus.c**: An updated version of the `get_next_line` implementation, including bonus features.
+- **get_next_line_bonus.h**: Header file for the bonus features of the `get_next_line` function.
+- **get_next_line_en.subject.pdf**: A PDF document outlining the project subject and requirements.
+- **get_next_line_utils.c**: Utility functions file with updated variable and function names.
+- **get_next_line_utils_bonus.c**: An updated version of utility functions for bonus features.
+- **gnl.en.subject.pdf**: Renamed PDF document detailing the project's subject.
+- **results.png**: An uploaded image file capturing project results.
 
 ## Usage
 
