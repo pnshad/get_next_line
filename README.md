@@ -10,10 +10,7 @@ The primary goal of this project is to cultivate your expertise in the intricaci
 
 ## Guidelines and Resources
 
-For detailed instructions, refer to the project's subject documentation. Additionally, you can explore further resources such as:
-
-- [Libft](https://github.com/your-username/libft) (or your custom standard library functions implementation)
-- [Tripouille/gnlTester](https://github.com/Tripouille/gnlTester) for comprehensive testing
+- [Subject Guidelines](gnl.en.subject.pdf): This PDF document comprises essential guidelines and instructions for the get_next_line project within Libft. It offers comprehensive insights into the project's prerequisites and anticipated outcomes. To gain a thorough comprehension of the project's objectives and specifications, kindly consult this document. Your reference to this resource will prove invaluable in navigating the goals and particulars of the get_next_line project.
 
 ## Features
 
