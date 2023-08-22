@@ -68,7 +68,7 @@ gcc -Wall -Werror -Wextra -D BUFFER_SIZE=<size> get_next_line.c get_next_line_ut
 
 ## Testing
 
-To assess the functionality of the `get_next_line` function, edit the `get_next_line.c` file and uncomment the main function and headers. Modify the `test.txt` file for varying test cases. Execute the following command (replace "xx" with your desired buffer size):
+To assess the functionality of the `get_next_line` function, edit the `get_next_line.c` file and add a main function and headers. Modify the `test.txt` file for varying test cases. Execute the following command (replace "xx" with your desired buffer size):
 
 ```sh
 gcc -Wall -Werror -Wextra -D BUFFER_SIZE=xx get_next_line.c get_next_line_utils.c && ./a.out
