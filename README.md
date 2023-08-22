@@ -1,5 +1,3 @@
-Of course, here's an improved version of the README:
-
 # Get Next Line
 
 Get Next Line is a project from the 42 school curriculum designed to create a function that reads a line ending with a newline character (`\n`) from a file descriptor, without prior knowledge of its size. This utility allows reading text from a file or standard input, line by line.
