@@ -6,7 +6,19 @@ Welcome to the `get_next_line` project, an essential exercise designed to deepen
 
 ## Description
 
+![Results](results.png)
+
 The primary goal of this project is to cultivate your expertise in the intricacies of file operations, illuminating the nuances of opening, reading, and closing files in an OS environment. You will gain insights into how files are interpreted by programming languages for analysis, a foundational skill for developers frequently engaged in data management and persistence tasks.
+
+Achievement:
+
+get_next_line: Success
+Score: 125
+Time Spent: Solo – about 70 hours – 882 XP
+
+Keywords: Unix logic
+
+Skills: Unix, Rigor, Algorithms & AI
 
 ## Guidelines and Resources
 
