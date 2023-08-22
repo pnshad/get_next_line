@@ -1,48 +1,75 @@
-# Get Next Line
+Certainly, I've added the requested sections to the README. Here's the updated version:
 
-Get Next Line is a project from the 42 school curriculum designed to create a function that reads a line ending with a newline character (`\n`) from a file descriptor, without prior knowledge of its size. This utility allows reading text from a file or standard input, line by line.
+---
 
-## How it Works
+# get_next_line
 
-### Function Prototype
+## Introduction
+
+Welcome to the `get_next_line` project, an essential exercise designed to deepen your understanding of file manipulation, memory management, and the intricate processes involved in reading data from files within an operating system. This project challenges you to implement a highly practical function capable of extracting individual lines from a file descriptor.
+
+## Description
+
+The primary goal of this project is to cultivate your expertise in the intricacies of file operations, illuminating the nuances of opening, reading, and closing files in an OS environment. You will gain insights into how files are interpreted by programming languages for analysis, a foundational skill for developers frequently engaged in data management and persistence tasks.
+
+## Guidelines and Resources
+
+For detailed instructions, refer to the project's subject documentation. Additionally, you can explore further resources such as:
+
+- [Libft](https://github.com/your-username/libft) (or your custom standard library functions implementation)
+- [Tripouille/gnlTester](https://github.com/Tripouille/gnlTester) for comprehensive testing
+
+## Features
+
+- A function that reads and returns a line from a file descriptor.
+- The capability to efficiently process data from multiple file descriptors simultaneously (bonus).
+
+## Folder Structure
+
+The project repository is organized as follows:
+
+- `get_next_line.c`: Main implementation of the `get_next_line` function.
+- `get_next_line_utils.c`: Utility functions required for the main implementation.
+- `get_next_line.h`: Header file containing function prototypes and necessary includes.
+
+## Usage
+
+### Incorporating the Function
+
+To integrate the `get_next_line` function into your code, include its header:
 
 ```c
-char *get_next_line(int fd);
+#include "get_next_line.h"
 ```
 
-The `get_next_line` function takes a file descriptor `fd` as an argument and returns a pointer to a string containing the next line read from `fd`. If there's nothing else to read or an error occurs, it returns `NULL`. The returned string includes the newline character, unless the end of the file is reached.
+When compiling your code, ensure you include the source files and set the appropriate buffer size:
 
-### Implementation Details
-
-The function operates by utilizing a static variable to store remaining text from the previous read call. This remaining text is appended to the next read buffer, and the function searches for the first newline character within the combined string. The portion before the newline character is returned as the next line, and the content after the newline character is stored in the static variable for subsequent calls.
-
-To configure the read behavior, a macro named `BUFFER_SIZE` determines the size of the read buffer. This macro can be modified at compile time using `-D BUFFER_SIZE=xx`, where `xx` represents the desired buffer size. For instance:
-
-```bash
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c
+```sh
+gcc -Wall -Werror -Wextra -D BUFFER_SIZE=<size> get_next_line.c get_next_line_utils.c
 ```
 
-Supporting utility functions (`ft_strlen`, `ft_strchr`, `ft_strdup`, `ft_strjoin`, and `ft_substr`) are defined in `get_next_line_utils.c`. These functions assist in various string manipulations.
+## Testing
 
-The `get_next_line` function and its utility functions are declared in the header file `get_next_line.h`.
+To assess the functionality of the `get_next_line` function, edit the `get_next_line.c` file and uncomment the main function and headers. Modify the `test.txt` file for varying test cases. Execute the following command (replace "xx" with your desired buffer size):
 
-## Bonus Features
+```sh
+gcc -Wall -Werror -Wextra -D BUFFER_SIZE=xx get_next_line.c get_next_line_utils.c && ./a.out
+```
 
-The project's bonus section introduces two additional features:
+Alternatively, employ the [Tripouille/gnlTester](https://github.com/Tripouille/gnlTester) tool for comprehensive testing.
 
-- Achieving `get_next_line` with a single static variable.
-- Managing multiple file descriptors with `get_next_line`. This means you can seamlessly call `get_next_line` on multiple file descriptors without losing reading context.
+## Contributing
 
-The bonus functionalities are implemented in files named `get_next_line_bonus.c`, `get_next_line_utils_bonus.c`, and `get_next_line_bonus.h`. These files mirror the core logic of the mandatory files but utilize a linked list structure to retain static variables for each file descriptor. Each node in the list comprises:
+Contributions are welcome! If you find any issues or improvements, please feel free to open an issue or create a pull request.
 
-- File descriptor number (`fd`).
-- Remaining text from the previous read call (`rest`).
-- A pointer to the next node (`next`).
+## License
 
-The function locates the matching node for a given file descriptor or creates a new one if none exists. Then, it proceeds as in the mandatory part, utilizing the `rest` field of the node as the static variable.
+This project is released under the [MIT License](LICENSE), granting you the freedom to use, modify, and distribute the code according to the terms outlined.
 
-## Testing and Verification
+## Acknowledgements
 
-For testing the function, you can utilize the provided `main.c` file. This file accepts one or more file names as arguments and uses `get_next_line` to print their contents line by line. Standard input can be used by passing no arguments or using `-` as an argument.
+We would like to express our gratitude to the developers and contributors of related tools and libraries that have made this project possible.
 
-External testers such as [gnlTester](https://github.com/topics/get-next-line), [gnl-unit-test](https://github.com/Yaten/42-get_next_line), and [gnl-station-tester](https://github.com/mcombeau/get_next_line) are available to validate your function against leaks, errors, and edge cases. These can aid in comprehensive testing of your implementation.
+---
+
+Please customize and adjust this version of the README to match your project's specifics and any additional information you want to include.
